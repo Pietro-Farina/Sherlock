@@ -24,7 +24,7 @@ Deduction: Explain your reasoning as if briefing Watson on the club’s hidden h
 **c)** Since the two classes have to sit alternated to avoid discussion, we can count the seatings between the same classes independently and then multiply them together. So the number of seatings between the same class is `5! = 120`.
 Now, we need to take into account that all the inspectors will either all sit on an even seat or all sit on an odd seat. Thus, the final number of seatings will be `(5! x 5!) x 2 = 14.400 x 2 = 28.800`
 
-**d)** Assuming we have the pair already formed, then we have `5!` possible orders for the pairs, we have to multiply this number with `2^5` because the memebers of the couple can switch position, so we end up with `5! x 2^5 = 120 x 32 = 3.840` seatings. If we need to consider also all the possible different pairs we can obtain then we have to multiply with the `5!` obtaining `460.800` possible arrangements.
+**d)** Assuming we have the pair already formed, then we have `5!` possible orders for the pairs, we have to multiply this number with `2^5` because the memebers of the couple can switch position, so we end up with `5! x 2^5 = 120 x 32 = 3.840` seatings. If we need to consider also all the possible different pairs we can obtain, then we have to multiply with the `5!` obtaining `460.800` possible arrangements.
 
 <hr/>
 
@@ -34,6 +34,12 @@ Irene Adler hides messages in sorted arrays of k distinct integers, each from 1 
 Deduction: Unravel the pattern as if outwitting her guile.
 
 #### Solution
+
+We have a set of integers: {1, ..., n), and we need to pick k different integer in an increasing order since the alogirthm are sorted.
+The fact that they are sorted means that we can discard the other possible permutations of the same choosen subset.
+Given this, given this we can reduce the problem to combinations of distinct objects: a combination is an unordered selection of r objects from a set of n objects: `n!/(k! x (n-k)!)`.
+
+Note: here Chatgpt helped Sherlock to understand the problem.
 
 <hr/>
 
@@ -49,11 +55,13 @@ Deduction: Track its steps as if hunting it across the moors.
 
 #### Solutions
 
-##### a)
+**a)** To move from (1,1) to (n,m), the hound need to take precisely (n-1) down steps and (m-1) right steps. So, every path is a sequence of (n-1) + (m-1) steps, which can be rewritten as (n+m-2). The problem reduces to _"how many ways can we arrange (n−1) down steps and (m−1) right steps in a sequence of length (n+m−2)?"_, and here fellow Chatgpt suggested that we need to choose positions for the (n-1) down steps, or alternatively (m-1) right steps, and it remembered that since binomial coefficients are symmetric, both choices lead to the identical result.
+After here it was _elementary_ to deduce the solutions was `(n+m-2)!/(n-1)! x (m-1)!`
 
-##### b)
+**b)** Given the fact that the first move is fixed as a right, then we have to arrange only (n-1) down steps and (m-2) right steps, in a sequence of length (n-1)+(m-2)=(n+m-3). So, the number of paths are `(n+m-3)!/(n-1)! x (m-2)!`
 
-##### c)
+**c)** Here Sherlock had to ask again help to Chatgpt, which explained that we can divide the number of moves into 4 segments:
+`x1+x2+x3+x4=n+m−2`, where two segments correspond to right moves and two segments correspond to down moves. Each segment must be at least one move long (otherwise, it wouldn’t be a proper switch), so we require: `x1​,x2​,x3​,x4​≥1`, which translates into `x1+x2+x3+x4=n+m−6`. The number of valid solutions to this equation in non-negative integers is given by the stars and bars formula: `(n+m-3)!/3!x(n+m-6)!`, which represents the number of ways to distribute the remaining n+m−6n+m−6 moves among the 4 segments. We have a 3 below since they represents the three dividers in the sequence of moves.
 
 <hr/>
 
