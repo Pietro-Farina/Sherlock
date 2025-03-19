@@ -17,13 +17,14 @@ Deduction: Explain your reasoning as if briefing Watson on the club’s hidden h
 
 #### Solutions
 
-##### a)
+**a)** The members are distinct so we can use the perfmutation rule: a permutation is an ordered arrangement of n distinct objects. Thus, the silent gentlemen can be seated in `10! = 3.628.800` different ways.
 
-##### b)
+**b)** We can think of Mycroft Holmes and his aide as a inseperable couple, or better as a single unit. By doing so, we have to count the possible arrengments of 9 unit (8 gentlemen + 1 couple), which again is a permutation, and multiply it by two because the member of the couple can switch position (x,y) or (y,x). So, there are `2 x 9!= 2 x 362880 = 725.760` arrangements.
 
-##### c)
+**c)** Since the two classes have to sit alternated to avoid discussion, we can count the seatings between the same classes independently and then multiply them together. So the number of seatings between the same class is `5! = 120`.
+Now, we need to take into account that all the inspectors will either all sit on an even seat or all sit on an odd seat. Thus, the final number of seatings will be `(5! x 5!) x 2 = 14.400 x 2 = 28.800`
 
-##### d)
+**d)** Assuming we have the pair already formed, then we have `5!` possible orders for the pairs, we have to multiply this number with `2^5` because the memebers of the couple can switch position, so we end up with `5! x 2^5 = 120 x 32 = 3.840` seatings. If we need to consider also all the possible different pairs we can obtain then we have to multiply with the `5!` obtaining `460.800` possible arrangements.
 
 <hr/>
 
@@ -68,11 +69,11 @@ Deduction: Compute the odds as if spotting Moriarty’s bluff.
 
 #### Solutions
 
-##### a)
+**a)**
 
-##### b)
+**b)**
 
-##### c)
+**c)**
 
 <hr/>
 
@@ -97,11 +98,11 @@ Deduction: Justify your counts as if tracing Moriarty’s twisted logic.
 
 #### Solutions
 
-##### a)
+**a)**
 
-##### b)
+**b)**
 
-##### c)
+**c)**
 
 <hr/>
 
@@ -116,9 +117,9 @@ Deduction: Argue your totals as if pitching to a wary Watson.
 
 #### Solutions
 
-##### a)
+**a)**
 
-##### b)
+**b)**
 
 <hr/>
 
@@ -137,11 +138,11 @@ Deduction: Map the overlaps as if decoding a Yard cipher—explain each step.
 
 #### Solutions
 
-##### a)
+**a)**
 
-##### b)
+**b)**
 
-##### c)
+**c)**
 
 <hr/>
 
@@ -156,9 +157,9 @@ Deduction: Think like the spy—explain as if Holmes is one step ahead.
 
 #### Solutions
 
-##### a)
+**a)**
 
-##### b)
+**b)**
 
 <hr/>
 
@@ -173,9 +174,9 @@ Deduction: Interpret the rolls as if they spell a fatal clue—mind the overlaps
 
 #### Solutions
 
-##### a)
+**a)**
 
-##### b)
+**b)**
 
 <hr/>
 
