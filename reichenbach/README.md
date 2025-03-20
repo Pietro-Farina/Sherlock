@@ -178,9 +178,9 @@ Deduction: Think like the spy—explain as if Holmes is one step ahead.
 
 #### Solutions
 
-**a)**
+**a)** Each password has a chance of `1/n` to be picked. Since we are discarding the failures after drawing a wrong password, the next one will be picked by the `(n-1)` remaining passwords, and so on till reaching the k-th tries which will be picked from the `(n-k+1)` passwords left. Since we want to get the right password at the excatly k-th try, then we have to always pick a wrong password before. For example, at the first try we have n wrong passwords minus the right one over all the passwords n: `(n-1)/n`, at the second tries we will have `(n-2)/(n-1)` because we have discarded a password. So, we will have: `(n-1)/n * (n-2)/(n-1) * ... * (n-k+1)/(n-k+2)` which represents picking the wrong password until the (k-1)-th attempt, we can simplify it as `(n-k+1)/n`. This has to be multplied to the probability of picking the right passsword at the k-th try which is: `1/(n-k+1)`. So, the final result is `(n-k+1)/n * 1/(n-k+1) = 1/n`.
 
-**b)**
+**b)** In this case, since the spy don't discrd the failures, it will have to repeat picking the wrong password for `(k-1)` tries, each with a probability of `(n-1)/n`, and finnally pick the right result at k-th try with a probability of `1/n`. So, the the chance to win at the k-th try is: `((n-1)/n)^(k-1) * 1/n`.
 
 <hr/>
 
@@ -195,9 +195,19 @@ Deduction: Interpret the rolls as if they spell a fatal clue—mind the overlaps
 
 #### Solutions
 
-**a)**
+**a)** Chatgpt came to the rescue once again, explaining we are dealing with a distribution of six numbers in a sequence of six independent trials. The general idea is to multiply: `numbers of possible two numbers x number of ways to arrange three of the two numbers x probability of a particular sequence`:
+1. The possible combinations of number is easy: `C(6,2) = 15`.
+2. The number of ways to arrange three times two different numbers corresponds to the Permutations of Indistinct Objects, which is given by `6!/(3! x 3!) = 20`, because we have two numbers, each one is appearing three times in the sequence and we dont make distinction between the same numbers.
+3. Finnally, each roll has 1/6 chance of landing on any numbers, so the probability of any given sequence is `(1/6)^6 = 1/46.656`.
+We can obtain the final result which is: `300/46.656 = 0,00643` which is around `0,64%`.
 
-**b)**
+**b)** Similarly, if exactly one number hits thrice, it means that the others number can appears at most two times. We can have two cases:
+1. one number appearing thrice, one number appearing twice, one number appearing once, three numbers don't appear. Thus, we have 6 choices for the number appearing thrice, 5 choices for one number appearing twice, and 4 choices for the last number, for a total of 120 choices. The rolls can be arranged similarly as we did before: `6!/(3! x 2!) = 60`. For a total of `7.200/46.656` probabilities.
+2. one number appearing thrice, three numbers appear once and two numbers don't appear. Again, we have `6 x C(5,3) = 60` choices, with `6!/3! = 120` arrangements. For a total of `7.200/46.656` probabilities. This time we did not have repetition between the remaining three numbers and that's why we used combination of distinct object.
+
+We can then sum together the two cases to have the final chance of having exactly one number hits thrice: `(7.200 + 7.200)/46.656 = 0,3086` which is close to `30,86%`. 
+
+
 
 <hr/>
 
@@ -208,6 +218,11 @@ Deduction: Trace the mail as if thwarting a league plot.
 
 #### Solution
 
+From the Bucketing with Distinct Objects we have 12^20 possible ways to distribute the letters among the informant. We can choose the informant that will get 2 letters with `C(12,4)` and the informants that will receive 4 letters with `C(8,3)`.
+The first group can receive letters in the following different ways: `C(20,2) x C(18,2) x C(16,2) x C(14,2)`. For the second group instead: `C(12,4) x C(8,4) x C(4,4)`.
+
+Finnally, the chance that 4 informants get exactly 2 letters, 3 get exactly 4, and the rest empty-handed is `{[C(12,4) x C(8,3)] x [C(20,2) x C(18,2) x C(16,2) x C(14,2)] x [C(12,4) x C(8,4) x C(4,4)]}/12^20`.
+
 <hr/>
 
 ### 12: The Buckets of Bohemia
@@ -216,6 +231,9 @@ m clues are hashed into N buckets by a rogue algorithm, all N^m outcomes equal. 
 Deduction: Model the scatter as if piecing together a broken photograph.
 
 #### Solution
+
+The probability of one clue landing in a precise bucket is `1/N`. There are `C(m,k)` possible ways to choose the k clues that enter the first bucket, for each of those clue the probability of landing in the first bucket is `1/N`, thus the probability of k clues landing in the first bucket is `(1/N)^k`. Since we have exactly k clues in the first bucket, all the others clues cannot enter in the first bucket and they do so with a probability of `(N-1/N)` each, so the probability of all other m-k clues landing in a bucket different from the first is `(N-1/N)^m-k`.
+Thus, the chance exactly k land in the first bucket is `C(m,k) x (1/N)^k x (N-1/N)^m-k`.
 
 ## Coding (Sherlock Holmes Edition)
 
