@@ -243,3 +243,71 @@ Holmes and Moriarty duel with a device spitting integers from 1 to 100. Holmes a
 Deduction: Code as if the fate of London hangs in the balance—comment your logic.
 
 #### Solution
+
+We can write the following code to estimate Moriarty’s victory odds:
+
+```
+import random
+
+class Spitter_Device:    
+    def __init__(self, seed = 10):
+        random.seed(seed)
+    
+    def spit_integer(self):
+        values = random.randint(1, 100)
+        
+        return values
+
+def play_one_round(device):
+    s, x, y = 0, 0, 0
+    
+    while (s<=100):
+        x = device.spit_integer()
+        s += x
+    
+    while (s<=200):
+        y = device.spit_integer()
+        s += y
+    
+    return x, y
+
+def simulate_many_rounds(rounds):
+    device = Spitter_Device()
+    
+    holmes, moriarty, draws, current_round = 0, 0, 0, 0
+    
+    while (current_round < rounds):
+        x, y = play_one_round(device)
+
+        if (x == y):
+            draws += 1
+        elif (x > y):
+            holmes += 1
+        else:
+            moriarty += 1
+            
+        current_round += 1
+        
+        if ((current_round % 10000) == 0):
+            print(f'Status: {round(current_round/10000)} / {round(rounds/10000)}')
+    
+    print(f'Final stats: Holmes with {holmes} wins and Moriarty with {moriarty} wins, draws {draws}')
+    
+    p_total = holmes + moriarty + draws
+    p_holmes = holmes / p_total
+    p_moriarty = moriarty / p_total
+    p_draws = draws / p_total
+
+    print(f'Prob of Holmes winning {round(p_holmes * 100, 1)}%\nProb of Moriarty winning {round(p_moriarty * 100, 1)}%\nProb of draws {round(p_draws * 100, 1)}%')
+
+simulate_many_rounds(100000)
+```
+
+which will output:
+
+```
+Final stats: Holmes with 46484 wins and Moriarty with 52231 wins, draws 1285
+Prob of Holmes winning 46.5%
+Prob of Moriarty winning 52.2%
+Prob of draws 1.3%
+```
