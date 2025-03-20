@@ -127,9 +127,16 @@ Deduction: Argue your totals as if pitching to a wary Watson.
 
 #### Solutions
 
-**a)**
+**a)** We had to ask help to the investor Chatpgt, which suggested to reduce the problem into a "stars and bars" one. The starting assumption is that each enterprise has its own distinct minimum, so the remiaining budget across all 4 enterprieses will be of 10M.
+Now we can use the "stars and bars" formula to distribute 10 indistinguishable units among 4 distinguishable enterprises. The formula for distributing n identical items among k bins is: C(n+k-1, k-1). So, our case we will have `C(10+4-1, 4-1) = C(13,3) = 286` possible strategies.
 
-**b)**
+**b)** Now, if we add the possibility of not funding one enterprise, we will have a higher budget for the other three, which depends on the minimum budget of the not funded one. So, we need to count each case:
+1. Removing Enterprise 1 (£1M Minimum): remaining budget is 11M among 3 enterprises resulting in `C(13, 2) = 78` different ways.
+2. Removing Enterprise 2 (£2M Minimum): remaining budget is 12M among 3 enterprises resulting in `C(14, 2) = 91` different ways.
+3. Removing Enterprise 3 (£3M Minimum): remaining budget is 13M among 3 enterprises resulting in `C(15, 2) = 105` different ways.
+4. Removing Enterprise 4 (£4M Minimum): remaining budget is 14M among 3 enterprises resulting in `C(16, 2) = 120` different ways.
+
+So, the final number of possible plans is `286 + 78 + 91 + 105 + 120 = 680`
 
 <hr/>
 
@@ -148,11 +155,15 @@ Deduction: Map the overlaps as if decoding a Yard cipher—explain each step.
 
 #### Solutions
 
-**a)**
+**a)** The problem of agents can be reduced to the problem of inclusion-exclusion with three events: C++, Python and Java; we will use just C, P and J. Since they are not musually exclusive we can count the probability of an agent attending at least one course with the following formula `P(C or P or J) = P(C) + P(P) + P(J) - P(C and P) - P(C and J) - P(P and J) + P(C and P and J) = 27 + 28 + 20 - 8 - 12 - 5 + 2 = 52`. So, the number of agents studying zero courses are `100 - 52 = 48`, from here the chance a random agent has evaded all courses is `48%`. 
 
-**b)**
+**b)** Since we want agents studying exactly one we must compute all the following chances:
+1. `P(C and not P and not J) = P(C) - (P(C and P) - P(C and J) - P(C and P and J)) =  28 - (8 + 12 - 2) = 28 - 18 = 10`
+2. `P(P and not C and not J) = P(P) - (P(C and P) - P(P and J) - P(C and P and J)) =  20 - (8 + 5 - 2)  = 20 - 11 = 9`
+3. `P(J and not C and not P) = P(J) - (P(J and P) - P(C and J) - P(C and P and J)) =  27 - (5 + 12 - 2) = 27 - 15 = 12`
+So, the total agent studying exactly one course is `10 + 9 + 12 = 31`, thus the probability is `0,31` or `31%`.
 
-**c)**
+**c)** By nabbing two students, the probability that at least one knows a course is 1 minus the probability of both agents evading all courses: `1 - (0.48 x 0.48) = 1 - 0.2304 = 0,7696`, approximately `77%`
 
 <hr/>
 
