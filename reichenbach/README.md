@@ -77,11 +77,11 @@ Deduction: Compute the odds as if spotting Moriarty’s bluff.
 
 #### Solutions
 
-**a)**
+**a)** The total number of possible distinct hands are `C(52,5) = 2.598.960`. A flush of a given suit can be done in `C(13,5) =  1287` different ways, and since we have four suit we have `4 x 1287 = 5148` possible flushes. The chance of having a flush, including straight ones, are `5148/2.598.960` which is approximately `0,1980%`.
 
-**b)**
+**b)** First let's choose two different values of the cards that will be pairs, in our case a and b: `C(13,2)`, for each of these values, pick two suits from the four suits available: `C(4,2) x C(4,2)`. Let's take the last different card c and its suit: `C(11,1) x C(4,1)`. The final result is `C(13,2) x C(4,2) x C(4,2) x (11,1) x (4,1) / C(52,5) = 78 x 6 x 6 x 11 x 4 / 2.598.960 = 123.552 / 2.598.960 = 0,04753`, which is approximately `47,53%`.
 
-**c)**
+**c)** For a four of a kind we can take the card a: `C(13,1) x (4,4)`, and the different card b: `C(11,1) x (4,1)`. This result in `C(13,1) x (4,4) x C(12,1) x (4,1) / C(52,5) = 13 x 1 x 12 x 4 / 2.598.960 = 624 / 2.598.960 = 0,00024`, which is around `0,024%`.
 
 <hr/>
 
@@ -91,6 +91,8 @@ A telegraph sends M 0’s and N 1’s in random order. What’s the chance the f
 Deduction: Reason through the static as if time is running out.
 
 #### Solution
+
+The possible subsequences (or prefix) of the telegraph with length r are given by C(M+N, r), we can enforce the constraint of having exactly k 1's by `C(N, k) x C(M, r-k)`, which represents having exactly k 1's and r-k 0's. So, the final result is given by `C(N, k) x C(M, r-k) / C(M+N, r)`.
 
 <hr/>
 
@@ -106,11 +108,11 @@ Deduction: Justify your counts as if tracing Moriarty’s twisted logic.
 
 #### Solutions
 
-**a)**
+**a)** Assuming that the birds and reptiles are of different species, Mortiary can choose freely three bird for his exhibit: C(8,3), and 3 reptiles: C(6,3). So, he can craft a total of `C(8,3) x C(6,3) = 56 x 20 = 1.120` exhibits.
 
-**b)**
+**b)** Here Chatgpt gave a hint about the reasoning, the idea is to subtract from the total number of exhibits, the number of invalid ones, which are the one with the two birds. The chance of getting the two birds which are `C(2,2)=1` and a third bird from the remaining 6: C(6,1). The choices of reptiles is the same as before: C(6,3). So, in summary we have `1.120 - (1 x C(6,1) x C(6,3) (invalid cases) = 1.120 - (6 x 20) = 1.000` exhibits that avoid the dangerous peril.
 
-**c)**
+**c)** We can perform a similar reasoning for this problem, in particular we have 1 venoumous parrot and two other birds to pick: C(7,2), a cobra and other two reptile C(5,2). So, the amount of exhibits that dodge the venomous trap are `1.120 - (C(7,2) x C(5,2)) = 1.120 - (21 x 10) = 910`
 
 <hr/>
 
