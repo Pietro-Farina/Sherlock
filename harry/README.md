@@ -30,11 +30,14 @@ $$
 **c)**
 
 **Prior belief**:  
+
 $$
 D \sim \mathcal{N}(\mu_0 = 98,\, \sigma_0^2 = 16)
 $$
+
 **Posterior**:  
 The instrument measures \( z = D + Noise \), where Distance is 100 and Noise is Gaussian:
+
 $$
 \mathcal{N}(0,\, 4)
 $$
@@ -52,6 +55,7 @@ $$
 $$
 
 So the posterior PDF is:
+
 $$
 p(D \mid z=100) = \frac{1}{\sqrt{2\pi \cdot 3.2}} \exp\left( -\frac{(D - 99.6)^2}{2 \cdot 3.2} \right)
 $$
