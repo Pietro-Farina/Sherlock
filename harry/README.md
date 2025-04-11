@@ -30,14 +30,14 @@ $$
 **c)**
 
 **Prior belief**:  
-  $$
-  D \sim \mathcal{N}(\mu_0 = 98,\, \sigma_0^2 = 16)
-  $$
+$$
+D \sim \mathcal{N}(\mu_0 = 98,\, \sigma_0^2 = 16)
+$$
 **Posterior**:  
-  The instrument measures \( z = D + Noise \), where Distance is 100 and Noise is Gaussian:
-  $$
-  \mathcal{N}(0,\, 4)
-  $$
+The instrument measures \( z = D + Noise \), where Distance is 100 and Noise is Gaussian:
+$$
+\mathcal{N}(0,\, 4)
+$$
 
 Since both prior and likelihood are Gaussian, the posterior is also Gaussian.
 
