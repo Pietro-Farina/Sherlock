@@ -27,10 +27,33 @@ $$
 P(reading = 100| D = t) = \frac{1}{2 \sqrt{2 \pi}} e^{ -\frac{1}{2} \left(  \frac{100 - t}{2}   \right)^2  }
 $$
 
-**c)** From the Bayes' Rule: Posterior∝Prior×Likelihood:
+**c)**
+
+**Prior belief**:  
+  $$
+  D \sim \mathcal{N}(\mu_0 = 98,\, \sigma_0^2 = 16)
+  $$
+**Posterior**:  
+  The instrument measures \( z = D + Noise \), where Distance is 100 and Noise is Gaussian:
+  $$
+  \mathcal{N}(0,\, 4)
+  $$
+
+Since both prior and likelihood are Gaussian, the posterior is also Gaussian.
+
+At this point we can update the mean and the variance:
 
 $$
-P(D=t ∣ reading=100) ∝ e^{ -\frac{1}{2} \left(  \frac{t - 98}{4}   \right)^2  } \cdot e^{ -\frac{1}{2} \left(  \frac{100 - t}{2}   \right)^2  }
+\mu_{\text{post}} = \frac{\sigma_z^2 \mu_0 + \sigma_0^2 z}{\sigma_0^2 + \sigma_z^2} = \frac{4 \cdot 98 + 16 \cdot 100}{16 + 4} = \frac{1992}{20} = \frac{498}{5} = 99.6
+$$
+
+$$
+\sigma_{\text{post}}^2 = \frac{\sigma_0^2 \sigma_z^2}{\sigma_0^2 + \sigma_z^2} = \frac{16 \cdot 4}{20} = \frac{16}{5} = 3.2
+$$
+
+So the posterior PDF is:
+$$
+p(D \mid z=100) = \frac{1}{\sqrt{2\pi \cdot 3.2}} \exp\left( -\frac{(D - 99.6)^2}{2 \cdot 3.2} \right)
 $$
 
 Note: chatgpt used for this exercise.
